@@ -1,7 +1,22 @@
 .container {
+  text-align: center;
+  justify-content: center;
+
   &__h1 {
     font-size: 1.4rem;
-    text-align: center;
-    justify-content: center;
+  }
+}
+.loading {
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: white;
+  position: absolute;
+  text-align: center;
+
+  & p {
+    font-size: 1.9rem;
+    font-weight: 700;
   }
 }
