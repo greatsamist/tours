@@ -20,7 +20,9 @@ function Tour({ id, name, image, info, price }) {
           </button>
         </p> */}
       </div>
-      <button className={Styles["tour__btn"]}>Not Interested</button>
+      <div className={Styles['tour__button']}>
+        <button className={Styles["tour__btn"]}>Not Interested</button>
+      </div>
     </div>
   );
 }

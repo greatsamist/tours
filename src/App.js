@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Styles from "./App.module.scss";
 import Tour from "./components/Tour";
 import ToursApi from "./components/ToursApi";
@@ -9,19 +9,20 @@ function App() {
   const [loading, setIsLoading] = useState(true);
   const [tours, setTours] = useState([]);
 
-  useEffect(() => {
-    const fetchTours = async () => {
-      setIsLoading(true);
+  const fetchTours = async () => {
+    setIsLoading(true);
 
-      try {
-        const response = await fetch(url);
-        const tours = await response.json();
-        setIsLoading(false);
-        setTours(tours);
-      } catch (error) {
-        setIsLoading(true);
-      }
-    };
+    try {
+      const response = await fetch(url);
+      const tours = await response.json();
+      setIsLoading(true);
+      setTours(tours);
+    } catch (error) {
+      setIsLoading(true);
+    }
+  };
+
+  useEffect(() => {
     fetchTours();
   }, []);
 
@@ -34,14 +35,14 @@ function App() {
   }
 
   return (
-    <Fragment>
+    <main>
       <div className={Styles.header}>
         <h1>Our Tours</h1>
         <div className={Styles["header__underline"]}></div>
       </div>
       <ToursApi tour={tours} />
       <Tour />
-    </Fragment>
+    </main>
   );
 }
 

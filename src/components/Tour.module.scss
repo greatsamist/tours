@@ -1,10 +1,11 @@
 .tour {
+  display: flex;
+  flex-direction: column;
   background: white;
   margin: 2rem auto;
   padding-bottom: 20px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
-  max-width: 700px;
 
   &:hover {
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
@@ -41,9 +42,12 @@
     }
   }
 
+  &__button {
+    margin: auto;
+  }
+
   &__btn {
-    margin-left: auto;
-    margin-right: auto;
+    align-self: center;
     padding: 5px 40px;
     font-family: inherit;
     font-size: inherit;
