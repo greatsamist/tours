@@ -1,11 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import Tour from "./Tour";
 
-function ToursApi() {
-	const [data, setData] = useState();
-	useEffect(() = {
-
-	}, [])
-  return <div>ToursApi</div>;
+function ToursApi({ tour }) {
+  return (
+    <div>
+      {tour.map((tour) => (
+        <Tour
+          key={tour.id}
+          name={tour.name}
+          image={tour.image}
+          info={tour.info}
+          price={tour.price}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default ToursApi;

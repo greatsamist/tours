@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Styles from "./App.module.scss";
 import Tour from "./components/Tour";
-// import Card from "./components/Card.module.scss";
+import ToursApi from "./components/ToursApi";
+
 const url = "https://course-api.com/react-tours-project";
 function App() {
   const [loading, setIsLoading] = useState(true);
-  const [tour, setTours] = useState();
+  const [tours, setTours] = useState([]);
+
+  useEffect(() => {
+    const fetchTours = async () => {
+      setIsLoading(true);
+
+      try {
+        const response = await fetch(url);
+        const tours = await response.json();
+        setIsLoading(false);
+        setTours(tours);
+      } catch (error) {
+        setIsLoading(true);
+      }
+    };
+    fetchTours();
+  }, []);
 
   if (loading) {
     return (
@@ -14,9 +31,11 @@ function App() {
       </main>
     );
   }
+
   return (
     <div className={Styles.container}>
-      <h1 className={Styles["container__h1"]}>Our Tours</h1>
+      <h1 className={Styles["container__underline"]}>Our Tours</h1>
+      <ToursApi tour={tours} />
       <Tour />
     </div>
   );
