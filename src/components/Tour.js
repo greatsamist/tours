@@ -12,12 +12,13 @@ function Tour({ id, name, image, info, price }) {
         <div className={Styles["tour__price"]}>${price}</div>
       </div>
       <div className={Styles["tour__description"]}>
-        <p>
+        <p>{info}</p>
+        {/* <p>
           {readMore ? info : `${info.substring(0, 200)}...`}
           <button onClick={() => setReadMore(!readMore)}>
             {readMore ? "show less" : "read more"}
           </button>
-        </p>
+        </p> */}
       </div>
       <button className={Styles["tour__btn"]}>Not Interested</button>
     </div>

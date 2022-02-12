@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Styles from "./App.module.scss";
 import Tour from "./components/Tour";
 import ToursApi from "./components/ToursApi";
 
 const url = "https://course-api.com/react-tours-project";
+
 function App() {
   const [loading, setIsLoading] = useState(true);
   const [tours, setTours] = useState([]);
@@ -33,11 +34,14 @@ function App() {
   }
 
   return (
-    <div className={Styles.container}>
-      <h1 className={Styles["container__underline"]}>Our Tours</h1>
+    <Fragment>
+      <div className={Styles.header}>
+        <h1>Our Tours</h1>
+        <div className={Styles["header__underline"]}></div>
+      </div>
       <ToursApi tour={tours} />
       <Tour />
-    </div>
+    </Fragment>
   );
 }
 
