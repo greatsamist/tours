@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Styles from "./App.module.scss";
-import Tour from "./components/Tour";
+
 import ToursApi from "./components/ToursApi";
 
 const url = "https://course-api.com/react-tours-project";
@@ -15,10 +15,10 @@ function App() {
     try {
       const response = await fetch(url);
       const tours = await response.json();
-      setIsLoading(true);
+      setIsLoading(false);
       setTours(tours);
     } catch (error) {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 
@@ -37,11 +37,10 @@ function App() {
   return (
     <main>
       <div className={Styles.header}>
-        <h1>Our Tours</h1>
+        <h1 className={Styles['header__h1']}>Our Tours</h1>
         <div className={Styles["header__underline"]}></div>
       </div>
       <ToursApi tour={tours} />
-      <Tour />
     </main>
   );
 }
