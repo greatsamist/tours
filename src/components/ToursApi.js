@@ -1,17 +1,11 @@
 import React from "react";
 import Tour from "./Tour";
 
-function ToursApi({ tour }) {
+function ToursApi({ tour, removeTour }) {
   return (
     <div>
       {tour.map((tour) => (
-        <Tour
-          key={tour.id}
-          name={tour.name}
-          image={tour.image}
-          info={tour.info}
-          price={tour.price}
-        />
+        <Tour key={tour.id} {...tour} removeTour={removeTour} />
       ))}
     </div>
   );

@@ -9,6 +9,11 @@ function App() {
   const [loading, setIsLoading] = useState(true);
   const [tours, setTours] = useState([]);
 
+  const removeTour = (id) => {
+    const newTours = tours.filter((tour) => id !== tour.id);
+    setTours(newTours);
+  };
+
   const fetchTours = async () => {
     setIsLoading(true);
 
@@ -34,13 +39,29 @@ function App() {
     );
   }
 
+  if (tours.length === 0) {
+    return (
+      <main>
+        <div className={Styles.header}>
+          <p>No Tours Left</p>
+          <button
+            className={Styles["header__btn"]}
+            onClick={() => fetchTours()}
+          >
+            Refresh
+          </button>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main>
       <div className={Styles.header}>
-        <h1 className={Styles['header__h1']}>Our Tours</h1>
+        <h1 className={Styles["header__h1"]}>Our Tours</h1>
         <div className={Styles["header__underline"]}></div>
       </div>
-      <ToursApi tour={tours} />
+      <ToursApi tour={tours} removeTour={removeTour} />
     </main>
   );
 }

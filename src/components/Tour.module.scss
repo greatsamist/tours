@@ -8,7 +8,7 @@
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
   }
   &__img {
     width: 100%;
@@ -19,7 +19,13 @@
   &__heading {
     display: flex;
     justify-content: space-between;
+    text-align: center;
     padding: 1rem 2rem 0;
+
+    @media screen and (max-width: 450px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__header {
@@ -28,7 +34,10 @@
 
   &__price {
     color: #2fd19b;
+    padding: 0.3rem;
     font-weight: 700;
+    border-radius: 3px;
+    background: rgba(47, 209, 155, 0.205);
   }
 
   &__description {
@@ -37,13 +46,18 @@
     padding: 1rem 2rem;
     margin-bottom: 10px;
 
-    & span {
+    & button {
+      font-family: inherit;
+      font-size: inherit;
       color: #2fd19b;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
     }
   }
 
   &__button {
-    margin: auto;
+    margin: 0 auto 0.5rem;
   }
 
   &__btn {
